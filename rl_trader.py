@@ -295,8 +295,8 @@ class DQNAgent(object):
         done = minibatch['d']
 
         # calculate targets
-        target = rewards + (1 - done) * self.gamma * \
-            np.amax(self.model.predict(next_states), axis=1)
+        target = rewards + (1 - done) * self.gamma * np.amax(predict(self.model, next_states), axis=1)
+
 
         # With the PyTorch API, it is simplest to have the target be the
         # same shape as the predictions.
